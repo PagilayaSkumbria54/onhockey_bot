@@ -1,5 +1,3 @@
-"""Сбор всех доступных игр"""
-
 from typing import List
 
 from server.sources.game import Game

@@ -6,7 +6,7 @@ import tldextract
 from transliterate import translit
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-
+from server.sources.game import Game
 
 MONOSPACED_MODE = "`"
 """Символ для моноширинности текста"""
@@ -64,6 +64,24 @@ def get_team_name(team: str) -> str:
             return team_name
     return team_name
 
+
+def get_all_games(games: List[Game]) -> str:
+    """
+    Все игры, которые транслируются
+    Args:
+        games: Массив игр
+    Returns:
+        Team 1 - Team 2
+        Team 3 - Team 4
+    """
+    msg = ''
+    for game in games:
+        if msg:
+            msg += '\n'
+        msg += game.start_time.strftime('%H:%M') + ' (GMT0) ' + get_formatted_info(game)
+    return msg
+
+
 def get_domain(url: str) -> str:
     """Извлекает название домена из ссылки."""
     return tldextract.extract(url).domain.split('-')[0]
@@ -101,3 +119,6 @@ def get_valid_link(url: str):
     return None
 
 
+def get_formatted_info(game: Game) -> str:
+    """Отформатированная для отображения в сообщении строчка играющих команд"""
+    return _get_formatted_team_name(game.home) + ' - ' + _get_formatted_team_name(game.guest)

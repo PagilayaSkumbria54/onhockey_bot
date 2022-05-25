@@ -63,7 +63,6 @@ async def get_games() -> List[OnHockeyGame]:
                     href_tags = game.find_all('a') or []
                     for tag in href_tags:
                         channels.append(tag.get('href'))
-                    # пользователи хотят ссылки на трансляции, а не файлы трансляций
                     channels = list(filter(lambda x: FILE_EXTENSION not in x, channels))
                     if channels:
                         result.append(OnHockeyGame(info, start_time, channels))

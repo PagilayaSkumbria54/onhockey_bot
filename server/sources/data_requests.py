@@ -1,5 +1,4 @@
-"""Запросы на сайты"""
-
+# Запросы с сайта
 from urllib import parse
 
 import aiohttp

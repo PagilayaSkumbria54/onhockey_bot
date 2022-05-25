@@ -4,11 +4,11 @@ from server.gino.models.requests import Requests
 from server.gino.models.subscriptions import Subscriptions
 
 MIN_REQUEST_COUNT_FOR_REGULAR_USER = 5
-"""Минимальное количество запросов для того чтобы считать пользователя постоянным."""
+
 
 
 async def get_stats() -> str:
-    """Статистика по использованию бота."""
+
     requests = db.select([
         db.func.concat(
             db.func.text('Requests - '),

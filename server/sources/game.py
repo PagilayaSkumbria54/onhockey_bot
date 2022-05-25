@@ -1,5 +1,4 @@
-"""Класс - Матч двух команд"""
-
+# Класс матч двух команд
 from abc import ABC, abstractmethod
 from datetime import time
 from typing import List
